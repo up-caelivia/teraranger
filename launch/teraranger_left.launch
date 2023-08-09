@@ -1,0 +1,7 @@
+<launch>
+  <node pkg="teraranger" type="evo" name="teraranger_left" output="screen">
+    <param name="portname" value="/dev/ttyAMA0" />
+    <param name="sensor_type" value="Evo_60m" />
+    <remap from="/teraranger_evo" to="/teraranger_evo_left" />
+  </node>
+</launch>
