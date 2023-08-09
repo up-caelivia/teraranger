@@ -27,130 +27,31 @@ where <your_distro> is your ROS distribution (e.g. kinetic, lunar, indigo).
 
 If it's not available for your distribution, clone https://github.com/wjwwood/serial into your workspace, then build and source your workspace.
 
-## Installing the package
-
-### Installing from PPAs
-
-You can install the teraranger package by running the command:
-
-```
-sudo apt-get install ros-kinetic-teraranger
-```
 
 ### Building and Running the package from source
 
  To clone and build the package in your workspace follow these steps:
 
-* If you have ssh key setup for your github account:
-
 ```
-cd ~/ros_ws/src
-git clone git@github.com:Terabee/teraranger.git
-cd ~/ros_ws
+cd ~/stereo_ws/src
+git clone https://github.com/up-caelivia/teraranger.git
+cd ..
 catkin_make
 source devel/setup.bash
 ```
 
-* If you prefer to use https use this set of commands:
-
-```
-cd ~/ros_ws/src
-git clone https://github.com/Terabee/teraranger.git
-cd ~/ros_ws
-catkin_make
-source devel/setup.bash
-```
-
-## Running the TeraRanger Evo Mini
+## Running the TeraRanger EVO at right side
 
 After your workspace is built and sourced:
 ```
-rosrun teraranger evo_mini _portname:=/dev/ttyACM0
+roslaunch teraranger teraranger_right.launch
 ```
 
-This node is publishing on two topics:
-
-* /teraranger_evo_mini/range: Range message when the sensor is in single-pixel mode
-* /teraranger_evo_mini/ranges: RangeArray (from teraranger_array package) message with multiple ranges when the sensor is in multi-pixel mode
-
-## Running the TeraRanger Evo Thermal 33/90
+## Running the TeraRanger EVO at left side
 
 After your workspace is built and sourced:
 ```
-rosrun teraranger evo_thermal.py _portname:=/dev/ttyACM0
-```
-
-This node is publishing on two topics:
-
-* /teraranger_evo_thermal/rgb_image: a color mapped RGB image based on thermal data
-* /teraranger_evo_thermal/raw_temp_array: an array of 1024 raw thermal data
-* /teraranger_evo_thermal/ptat: internal temperature of the sensor
-
-## Running the TeraRanger Evo 64px
-
-After your workspace is built and sourced:
-```
-rosrun teraranger evo_64px.py _portname:=/dev/ttyACM0
-```
-
-This node is publishing on two topics:
-
-* /teraranger_evo_64px/depth_image: a colormapped RGB image based on depth data
-* /teraranger_evo_64px/point_cloud: a point cloud in the frame of the sensor
-
-## Running the TeraRanger Evo 60m
-
-After your workspace is built and sourced:
-```
-rosrun teraranger evo _portname:=/dev/ttyACM0 _sensor_type:=Evo_60m
-```
-
-## Running the TeraRanger Evo 40m
-
-After your workspace is built and sourced:
-```
-rosrun teraranger evo _portname:=/dev/ttyACM0 _sensor_type:=Evo_40m
-```
-
-## Running the TeraRanger Evo 15m
-
-After your workspace is built and sourced:
-```
-rosrun teraranger evo _portname:=/dev/ttyACM0 _sensor_type:=Evo_15m
-```
-
-## Running the TeraRanger Evo 600Hz
-
-After your workspace is built and sourced:
-
-```
-rosrun teraranger evo _portname:=/dev/ttyACM0 _sensor_type:=Evo_600Hz
-```
-
-## Running the TeraRanger Evo 3m
-
-After your workspace is built and sourced:
-
-```
-rosrun teraranger evo _portname:=/dev/ttyACM0 _sensor_type:=Evo_3m
-```
-
-
-**WARNING: By default, if no sensor_type is specified, the default sensor chosen is the Evo 60m**
-
-
-## Running the TeraRanger One
-
-After your workspace is built and sourced:
-```
-rosrun teraranger one _portname:=/dev/ttyACM0
-```
-
-## Running the TeraRanger Duo
-
-After your workspace is built and sourced:
-```
-rosrun teraranger duo _portname:=/dev/ttyACM0
+roslaunch teraranger teraranger_left.launch
 ```
 
 ## Changing Sensor Parameters
